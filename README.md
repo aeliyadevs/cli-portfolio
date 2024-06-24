@@ -12,7 +12,8 @@ A CLI (Command Line Interface) or terminal inspired portfolio website built with
 
 ## Developer Intro
 
-**Aeliya Tamang **\
+**Aeliya Tamang**\
+
 _aeliyadevs_
 Contact No.: [+977-9803079279]\
 Email Address: [aeliyadevs@gmail.com](mailto:aeliyadevs@gmail.com)

@@ -15,10 +15,23 @@ input {
   background: transparent;
   border: none;
   color: $text-c;
+  //   caret-color: red;
+  //   caret-shape: block;
   &:focus-visible {
     outline: none;
   }
 }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgb(52, 63, 81);
+}
+
 .background {
   background-color: $bg-c;
   //   background: url("./assets/wallpaperflare.com_wallpaper.jpg");
@@ -30,13 +43,13 @@ input {
   justify-content: center;
   align-items: center;
   .prompt-window {
-    width: 768px;
-    height: 500px;
+    width: 1080px;
+    // min-width: 768px;
+    height: 600px;
     background: $dark-c;
     // backdrop-filter: blur(1px);
     padding: 0;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 0 10px $bg-c;
     .header {
       display: flex;
@@ -44,6 +57,7 @@ input {
       align-items: center;
       background: rgb(42, 35, 110);
       padding: 6px;
+      border-radius: 10px 10px 0 0;
       .header-title {
         .logo {
           display: flex;
@@ -55,18 +69,43 @@ input {
         }
       }
       .controls {
-        img {
-          width: 24px;
+        button {
+          background: transparent;
+          border: none;
+          img {
+            width: 20px;
+          }
         }
       }
     }
     .prompt-body {
+      height: 515px;
       padding: 8px;
-      .prompt {
-        color: $primary-c;
+      padding-right: 15px;
+      margin: 15px 0;
+      margin-right: 5px;
+      overflow-y: auto;
+      #output {
+        .command {
+          display: flex;
+          .command-name {
+            color: $secondary-c;
+            width: 150px;
+          }
+        }
       }
-      .path {
-        color: $secondary-c;
+      #prompt-line {
+        display: flex;
+        gap: 5px;
+        #prompt {
+          color: $primary-c;
+        }
+        .path {
+          color: $secondary-c;
+        }
+        input {
+          flex-grow: 1;
+        }
       }
     }
   }
