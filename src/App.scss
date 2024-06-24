@@ -1,0 +1,73 @@
+@import "./assets/scss/partials";
+body {
+  color: $text-c;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+pre {
+  letter-spacing: 2px;
+  color: $accent-c;
+}
+input {
+  width: 200px;
+  resize: none;
+  background: transparent;
+  border: none;
+  color: $text-c;
+  &:focus-visible {
+    outline: none;
+  }
+}
+.background {
+  background-color: $bg-c;
+  //   background: url("./assets/wallpaperflare.com_wallpaper.jpg");
+  //   background-size: cover;
+  //   background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .prompt-window {
+    width: 768px;
+    height: 500px;
+    background: $dark-c;
+    // backdrop-filter: blur(1px);
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px $bg-c;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgb(42, 35, 110);
+      padding: 6px;
+      .header-title {
+        .logo {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          img {
+            width: 20px;
+          }
+        }
+      }
+      .controls {
+        img {
+          width: 24px;
+        }
+      }
+    }
+    .prompt-body {
+      padding: 8px;
+      .prompt {
+        color: $primary-c;
+      }
+      .path {
+        color: $secondary-c;
+      }
+    }
+  }
+}
