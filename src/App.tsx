@@ -7,17 +7,20 @@ import maximize from "./assets/maximize.svg";
 import minimize from "./assets/minimize.svg";
 import { useEffect, useState } from "react";
 import Output from "./components/Output";
+import Prompt from "./components/Prompt";
+import PromptComponent from "./components/PromptComponent";
 
 function App() {
-  const header = `
- ______   _______   _        _   _    _   ______
-| ___  | | ______| | |      | | | |  | | | ___  |
-| |__| | | |_____  | |      | | | |__| | | |__| |
-| ___  | | ______| | |      | | |____  | | ___  |
-| |  | | | |_____  | |____  | |  ____| | | |  | |
-|_|  |_| |_______| |______| |_| |______| |_|  |_| 
+  const header = ` ______
+|  __  | :::::::::::::::::::::::::::::::::::::::
+| |  | |  ______   _        _   _    _   ______
+| |__| | |  ____| | |      | | | |  | | |  __  |
+|  __  | | |____  | |      | | | |__| | | |__| |
+| |  | | |  ____| | |      | | |____  | |  __  |
+| |  | | | |____  | |____  | |  ____| | | |  | |
+|_|  |_| |______| |______| |_| |______| |_|  |_| 
 
-DEVS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Version 1.0.1`;
+DEVS :::::::::::::::::::::::::::::: Version 0.0.1`;
 
   //   const commands = `
   // bio           Know me
@@ -29,59 +32,59 @@ DEVS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Version 1.0.1`;
   // clear         Clear screen
   // `;
 
-  const commands = [
-    {
-      name: "bio",
-      description: "Know me well",
-    },
-    {
-      name: "skills",
-      description: "My skills",
-    },
-    {
-      name: "experiences",
-      description: "My work experiences",
-    },
-    {
-      name: "projects",
-      description: "My projects",
-    },
-    {
-      name: "contact",
-      description: "My contact informations",
-    },
-    {
-      name: "exit",
-      description: "Exit from terminal mode",
-    },
-    {
-      name: "clear",
-      description: "Clear screen",
-    },
-  ];
+  // const commands = [
+  //   {
+  //     name: "bio",
+  //     description: "Know me well",
+  //   },
+  //   {
+  //     name: "skills",
+  //     description: "My skills",
+  //   },
+  //   {
+  //     name: "experiences",
+  //     description: "My work experiences",
+  //   },
+  //   {
+  //     name: "projects",
+  //     description: "My projects",
+  //   },
+  //   {
+  //     name: "contact",
+  //     description: "My contact informations",
+  //   },
+  //   {
+  //     name: "exit",
+  //     description: "Exit from terminal mode",
+  //   },
+  //   {
+  //     name: "clear",
+  //     description: "Clear screen",
+  //   },
+  // ];
 
-  const contactInfo = [
-    {
-      name: "Phone",
-      description: "9876543210",
-    },
-    {
-      name: "email",
-      description: "aeliyadevs@gmail.com",
-    },
-    {
-      name: "facebook",
-      description: "https://facebook.com",
-    },
-    {
-      name: "linkedin",
-      description: "https://linkedin.com",
-    },
-    {
-      name: "github",
-      description: "https://github.com",
-    },
-  ];
+  // const contactInfo = [
+  //   {
+  //     name: "Phone",
+  //     description: "9876543210",
+  //   },
+  //   {
+  //     name: "email",
+  //     description: "aeliyadevs@gmail.com",
+  //   },
+  //   {
+  //     name: "facebook",
+  //     description: "https://facebook.com",
+  //   },
+  //   {
+  //     name: "linkedin",
+  //     description: "https://linkedin.com",
+  //   },
+  //   {
+  //     name: "github",
+  //     description: "https://github.com",
+  //   },
+  // ];
 
   const [command, setCommand] = useState("");
 
@@ -153,24 +156,12 @@ DEVS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Version 1.0.1`;
             ))} */}
           </div>
           <br />
-          <div id="prompt-line">
-            <span id="prompt">Welcome@aeliyadevs:-$</span>
-            <span className="path">~/</span>
-            <input
-              type="text"
-              autoFocus={true}
-              name="command"
-              onChange={(e) => {
-                setCommand(e.target.value);
-              }}
-              onKeyDown={handleCommand}
-            />
-          </div>
           <div id="output">
-            {output.map((item, index) => (
-              <Output data={item} key={index} />
-            ))}
+            {/* {output.map((item, index) => (
+              <Prompt key={index} data={item} />
+            ))} */}
           </div>
+          <PromptComponent />
           {/* <span id="prompt">Welcome@aeliyadevs</span>:-${" "}
           <span className="path">~/ </span>{" "}
           <input type="text" autoFocus={true} /> */}
