@@ -9,7 +9,7 @@ const PromptComponent = () => {
   const commands = [
     {
       name: "bio",
-      description: "Hy short introduction",
+      description: "My short introduction",
     },
     {
       name: "skills",
@@ -185,7 +185,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -206,16 +208,21 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
             <div className="output-content">
               {bio.map((data, index) => (
-                <div key={index} className="item">
-                  <div className="item-name">{data.name}</div>
-                  <div>{data.description}</div>
-                </div>
+                <>
+                  <div key={index} className="item">
+                    <div className="item-name">{data.name}</div>
+                    <div>{data.description}</div>
+                  </div>
+                  <br />
+                </>
               ))}
             </div>
           </>,
@@ -227,7 +234,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -248,28 +257,31 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
             <div className="output-content">
               {experiences.map((exp, index) => (
-                <div key={index} className="item">
-                  <div className="item-name">{exp.jobTitle}</div>
-                  <div>
-                    <span>
-                      <strong>
-                        <em>{exp.company}</em>
-                      </strong>
-                      <br />
-                      {exp.technologies}
-                      <br />
-                      {exp.jobDuration}
-                    </span>
-                    <br />
-                    <hr />
+                <>
+                  <div key={index} className="item">
+                    <div className="item-name">{exp.jobTitle}</div>
+                    <div>
+                      <span>
+                        <strong>
+                          <em>{exp.company}</em>
+                        </strong>
+                        <br />
+                        {exp.technologies}
+                        <br />
+                        {exp.jobDuration}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                  <br />
+                </>
               ))}
             </div>
           </>,
@@ -281,28 +293,31 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
             <div className="output-content">
               {education.map((edu, index) => (
-                <div key={index} className="item">
-                  <div className="item-name">{edu.level}</div>
-                  <div>
-                    <span>
-                      <strong>
-                        <em>{edu.institute}</em>
-                      </strong>
-                      <br />
-                      {edu.address}
-                      <br />
-                      Passed Year - {edu.passedYear}
-                    </span>
-                    <br />
-                    <hr />
+                <>
+                  <div key={index} className="item">
+                    <div className="item-name">{edu.level}</div>
+                    <div>
+                      <span>
+                        <strong>
+                          <em>{edu.institute}</em>
+                        </strong>
+                        <br />
+                        {edu.address}
+                        <br />
+                        Passed Year - {edu.passedYear}
+                      </span>
+                    </div>
                   </div>
-                </div>
+                  <br />
+                </>
               ))}
             </div>
           </>,
@@ -314,7 +329,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -353,7 +370,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -375,7 +394,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -404,7 +425,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -417,7 +440,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -440,7 +465,9 @@ const PromptComponent = () => {
           ...outputSection,
           <>
             <div id="prompt-line">
-              <span id="prompt">Welcome@aeliyadevs:-$</span>
+              <span id="prompt">
+                <span className="welcome">Welcome</span>@aeliyadevs:-$
+              </span>
               <span className="path">~/</span>
               <input type="text" value={command} disabled={true} />
             </div>
@@ -460,7 +487,9 @@ const PromptComponent = () => {
         ))}
       </div>
       <div id="prompt-line">
-        <span id="prompt">Welcome@aeliyadevs:-$</span>
+        <span id="prompt">
+          <span className="welcome">Welcome</span>@aeliyadevs:-$
+        </span>
         <span className="path">~/</span>
         <input
           type="text"
