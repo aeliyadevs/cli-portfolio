@@ -8,6 +8,8 @@ body {
 pre {
   letter-spacing: 2px;
   color: $accent-c;
+  margin: 0;
+  margin-bottom: 15px;
 }
 input {
   width: 200px;
@@ -15,6 +17,7 @@ input {
   background: transparent;
   border: none;
   color: $text-c;
+  font-family: monospace;
   //   caret-color: red;
   //   caret-shape: block;
   &:focus-visible {
@@ -80,9 +83,9 @@ input {
     }
     .prompt-body {
       height: 515px;
-      padding: 8px;
+      padding: 0 15px 8px 8px;
       padding-right: 15px;
-      margin: 15px 0;
+      margin: 12px 0;
       margin-right: 5px;
       overflow-y: auto;
       #output {
