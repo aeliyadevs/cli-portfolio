@@ -4,18 +4,19 @@ import closeIcon from "./assets/close.svg";
 import maximize from "./assets/maximize.svg";
 import minimize from "./assets/minimize.svg";
 import PromptComponent from "./components/PromptComponent";
+import MobilePopup from "./components/MobilePopup";
 
 function App() {
   const header = ` ______
-|  __  | :::::::::::::::::::::::::::::::::::::::
-| |  | |  ______   _        _   _    _   ______
-| |__| | |  ____| | |      | | | |  | | |  __  |
-|  __  | | |____  | |      | | | |__| | | |__| |
-| |  | | |  ____| | |      | | |____  | |  __  |
-| |  | | | |____  | |____  | |  ____| | | |  | |
-|_|  |_| |______| |______| |_| |______| |_|  |_| 
-
-::::::::::::::::::::::::::::::::::::::::::::::::`;
+|  __  | :::::::::::::::::::::::::::::::::::::::::
+| |  | |  ______   _        _   _    _   ______  |
+| |__| | |  ____| | |      | | | |  | | |  __  | |
+|  __  | | |____  | |      | | | |__| | | |__| | |
+| |  | | |  ____| | |      | | |____  | |  __  | |
+| |  | | | |____  | |____  | |  ____| | | |  | | |
+|_|  |_| |______| |______| |_| |______| |_|  |_| |
+                                                 |
+::::::::::::::::::::::::::::::::::::::::::::::::::`;
 
   const FullScreen = () => {
     document.body.requestFullscreen();
@@ -25,6 +26,8 @@ function App() {
   };
   return (
     <div className="background">
+      <MobilePopup />
+      {/* <MobilePopup /> */}
       <div className="prompt-window">
         <div className="header">
           <div className="header-title">

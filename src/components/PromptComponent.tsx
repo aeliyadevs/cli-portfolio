@@ -216,13 +216,10 @@ const PromptComponent = () => {
             </div>
             <div className="output-content">
               {bio.map((data, index) => (
-                <>
-                  <div key={index} className="item">
-                    <div className="item-name">{data.name}</div>
-                    <div>{data.description}</div>
-                  </div>
-                  <br />
-                </>
+                <div key={index} className="item">
+                  <div className="item-name">{data.name}</div>
+                  <div>{data.description}</div>
+                </div>
               ))}
             </div>
           </>,
@@ -265,23 +262,20 @@ const PromptComponent = () => {
             </div>
             <div className="output-content">
               {experiences.map((exp, index) => (
-                <>
-                  <div key={index} className="item">
-                    <div className="item-name">{exp.jobTitle}</div>
-                    <div>
-                      <span>
-                        <strong>
-                          <em>{exp.company}</em>
-                        </strong>
-                        <br />
-                        {exp.technologies}
-                        <br />
-                        {exp.jobDuration}
-                      </span>
-                    </div>
+                <div key={index} className="item">
+                  <div className="item-name">{exp.jobTitle}</div>
+                  <div>
+                    <span>
+                      <strong>
+                        <em>{exp.company}</em>
+                      </strong>
+                      <br />
+                      {exp.technologies}
+                      <br />
+                      {exp.jobDuration}
+                    </span>
                   </div>
-                  <br />
-                </>
+                </div>
               ))}
             </div>
           </>,
@@ -301,23 +295,20 @@ const PromptComponent = () => {
             </div>
             <div className="output-content">
               {education.map((edu, index) => (
-                <>
-                  <div key={index} className="item">
-                    <div className="item-name">{edu.level}</div>
-                    <div>
-                      <span>
-                        <strong>
-                          <em>{edu.institute}</em>
-                        </strong>
-                        <br />
-                        {edu.address}
-                        <br />
-                        Passed Year - {edu.passedYear}
-                      </span>
-                    </div>
+                <div key={index} className="item">
+                  <div className="item-name">{edu.level}</div>
+                  <div>
+                    <span>
+                      <strong>
+                        <em>{edu.institute}</em>
+                      </strong>
+                      <br />
+                      {edu.address}
+                      <br />
+                      Passed Year - {edu.passedYear}
+                    </span>
                   </div>
-                  <br />
-                </>
+                </div>
               ))}
             </div>
           </>,
@@ -354,11 +345,13 @@ const PromptComponent = () => {
                         {project.projectLink}
                       </a>
                     </span>
-                    <br />
-                    <hr />
                   </div>
                 </div>
               ))}
+              More projects on{" "}
+              <a href="https://github.com/aeliyadevs" target="_blank">
+                GitHub
+              </a>
             </div>
           </>,
         ]);
@@ -447,13 +440,8 @@ const PromptComponent = () => {
               <input type="text" value={command} disabled={true} />
             </div>
             <div className="output-content">
-              <div className="item">
-                <div>
-                  Thank you for visiting my portfolio site, and bye for now!{" "}
-                  <br />
-                  👋👋👋
-                </div>
-              </div>
+              Thank you for visiting my portfolio site, and bye for now! <br />
+              👋👋👋
             </div>
           </>,
         ]);
@@ -472,7 +460,9 @@ const PromptComponent = () => {
               <input type="text" value={command} disabled={true} />
             </div>
             <div className="output-content">
-              Invalid Command. Please type "help" to list all the valid commands
+              <span className="invalid">Invalid Command!</span>
+              <br />
+              Please type "help" to list all the valid commands
             </div>
           </>,
         ]);
