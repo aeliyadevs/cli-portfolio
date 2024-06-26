@@ -3,6 +3,7 @@ import logo from "./assets/react.svg";
 import closeIcon from "./assets/close.svg";
 import maximize from "./assets/maximize.svg";
 import minimize from "./assets/minimize.svg";
+import square from "./assets/square.svg";
 import PromptComponent from "./components/PromptComponent";
 import MobilePopup from "./components/MobilePopup";
 
@@ -41,7 +42,7 @@ function App() {
               <img src={minimize} alt="" />
             </button>
             <button onClick={FullScreen}>
-              <img src={maximize} alt="" />
+              <img src={square} alt="" />
             </button>
             <button>
               <img src={closeIcon} alt="" />
@@ -49,15 +50,15 @@ function App() {
           </div>
         </div>
         <div className="prompt-body">
-          <div>
+          <>
             <pre>{header}</pre>
             Portfolio CLI <br />
             <br />
-            Welcome to Portfolio CLI [Version 1.0.1] <br />© Aeliyadevs 2024.
-            All rights reserved. <br />
+            Welcome to Portfolio CLI [Version 1.0.1] <br />
+            © Aeliyadevs 2024. All rights reserved. <br />
             <br />
             For a list of available commands, type 'help'.
-          </div>
+          </>
           <br />
           <PromptComponent />
         </div>

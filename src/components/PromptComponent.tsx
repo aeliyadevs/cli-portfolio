@@ -1,11 +1,7 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import resume from "../assets/resume-aeliyadevs-2024.pdf";
 
 const PromptComponent = () => {
-  const [command, setCommand] = useState<string>("");
-  const [output, setOutput] = useState<Array<string>>([]);
-  const [outputSection, setOutputSection] = useState<Array<ReactNode>>([]);
-
   const commands = [
     {
       name: "bio",
@@ -44,7 +40,6 @@ const PromptComponent = () => {
       description: "Exit",
     },
   ];
-
   const bio = [
     {
       name: "Intro",
@@ -80,7 +75,6 @@ const PromptComponent = () => {
         "RESTful APIs, Authentication (JWT), Agile Methodologies, Unit Testing",
     },
   ];
-
   const experiences = [
     {
       jobTitle: "Solution Developer",
@@ -101,7 +95,6 @@ const PromptComponent = () => {
       jobDuration: "Apr, 2021 - Dec, 2022",
     },
   ];
-
   const education = [
     {
       level: "Bachelor Level - B.SC.CSIT",
@@ -122,7 +115,6 @@ const PromptComponent = () => {
       passedYear: "2016",
     },
   ];
-
   const projects = [
     {
       title: "CCT Dashboard",
@@ -153,7 +145,6 @@ const PromptComponent = () => {
       projectLink: "https://arkopananepal.com/",
     },
   ];
-
   const contactInfo = [
     {
       name: "Phone",
@@ -176,6 +167,17 @@ const PromptComponent = () => {
       description: "https://github.com",
     },
   ];
+  ////////////////////////////////
+  // end of data definition
+  ///////////////////////////////
+
+  const [command, setCommand] = useState<string>("");
+  const [output, setOutput] = useState<Array<string>>([]);
+  const [outputSection, setOutputSection] = useState<Array<ReactNode>>([]);
+
+  const [userActice, setUserActive] = useState(true);
+
+  const promptRef = useRef(null);
 
   const HandleEnerKeyPress = () => {
     switch (command) {
@@ -184,7 +186,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -207,7 +209,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -230,7 +232,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -253,7 +255,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -286,7 +288,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -319,7 +321,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -362,7 +364,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -386,7 +388,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -417,7 +419,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -432,7 +434,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -445,6 +447,7 @@ const PromptComponent = () => {
             </div>
           </>,
         ]);
+        setUserActive(false);
         break;
 
       default:
@@ -452,7 +455,7 @@ const PromptComponent = () => {
         setOutputSection([
           ...outputSection,
           <>
-            <div id="prompt-line">
+            <div className="prompt-line">
               <span id="prompt">
                 <span className="welcome">Welcome</span>@aeliyadevs:-$
               </span>
@@ -469,6 +472,14 @@ const PromptComponent = () => {
         break;
     }
   };
+
+  useEffect(() => {
+    promptRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [outputSection]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div id="output">
@@ -476,25 +487,29 @@ const PromptComponent = () => {
           <div key={index}>{item}</div>
         ))}
       </div>
-      <div id="prompt-line">
-        <span id="prompt">
-          <span className="welcome">Welcome</span>@aeliyadevs:-$
-        </span>
-        <span className="path">~/</span>
-        <input
-          type="text"
-          value={command}
-          autoFocus={true}
-          onChange={(e) => {
-            setCommand(e.target.value);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              HandleEnerKeyPress();
-              setCommand("");
-            }
-          }}
-        />
+      <div ref={promptRef}>
+        {userActice && (
+          <div id="prompt-line" className="prompt-line">
+            <span id="prompt">
+              <span className="welcome">Welcome</span>@aeliyadevs:-$
+            </span>
+            <span className="path">~/</span>
+            <input
+              type="text"
+              value={command}
+              autoFocus={true}
+              onChange={(e) => {
+                setCommand(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  HandleEnerKeyPress();
+                  setCommand("");
+                }
+              }}
+            />
+          </div>
+        )}
       </div>
     </>
   );
