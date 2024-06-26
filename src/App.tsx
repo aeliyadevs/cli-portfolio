@@ -18,6 +18,13 @@ function App() {
                                                  |
 ::::::::::::::::::::::::::::::::::::::::::::::::::`;
 
+  const welcomeText: Array<string> = [
+    "Portfolio CLI",
+    "Welcome to my CLI Portfolio [Version 1.0.0]",
+    "© Aeliyadevs 2024. All rights reserved.",
+    "For a list of available commands, type 'help'.",
+  ];
+
   const FullScreen = () => {
     document.body.requestFullscreen();
   };
@@ -51,12 +58,15 @@ function App() {
         <div className="prompt-body">
           <>
             <pre>{header}</pre>
-            Portfolio CLI <br />
-            <br />
-            Welcome to Portfolio CLI [Version 1.0.1] <br />
-            © Aeliyadevs 2024. All rights reserved. <br />
-            <br />
-            For a list of available commands, type 'help'.
+            <p id="welcomeText">
+              {welcomeText.map((item, index) => (
+                <span key={index}>
+                  <br />
+                  {item}
+                  <br />
+                </span>
+              ))}
+            </p>
           </>
           <br />
           <PromptComponent />
