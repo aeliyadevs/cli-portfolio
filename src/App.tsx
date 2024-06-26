@@ -1,7 +1,6 @@
 import "./App.scss";
 import logo from "./assets/react.svg";
 import closeIcon from "./assets/close.svg";
-import maximize from "./assets/maximize.svg";
 import minimize from "./assets/minimize.svg";
 import square from "./assets/square.svg";
 import PromptComponent from "./components/PromptComponent";
