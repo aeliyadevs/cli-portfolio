@@ -1,5 +1,4 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
-import resume from "../assets/resume-aeliyadevs-2024.pdf";
 import Bio from "./Bio";
 import Skills from "./Skills";
 import Experiences from "./Experiences";

@@ -241,6 +241,7 @@ input {
       }
       #welcomeText {
         margin: 0;
+        line-height: 30px;
       }
       #output {
         // overflow-y: auto;
@@ -252,13 +253,13 @@ input {
           }
           .item {
             display: grid;
-            grid-template-columns: 1fr 3fr;
+            grid-template-columns: 1fr 4fr;
             margin-bottom: 10px;
             @include xs {
               grid-template-columns: 1fr;
             }
             @include md {
-              grid-template-columns: 1fr 3fr;
+              grid-template-columns: 1fr 4fr;
             }
             .item-name {
               color: $secondary-c;

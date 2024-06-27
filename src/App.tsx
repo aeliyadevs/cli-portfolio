@@ -5,6 +5,8 @@ import minimize from "./assets/minimize.svg";
 import square from "./assets/square.svg";
 import PromptComponent from "./components/PromptComponent";
 import MobilePopup from "./components/MobilePopup";
+import Welcome from "./components/Welcome";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const header = ` ______
@@ -17,13 +19,41 @@ function App() {
 |_|  |_| |______| |______| |_| |______| |_|  |_| |
                                                  |
 ::::::::::::::::::::::::::::::::::::::::::::::::::`;
+  const headerTypingRef = useRef<HTMLPreElement>(null);
 
-  const welcomeText: Array<string> = [
-    "Portfolio CLI",
-    "Welcome to my CLI Portfolio [Version 1.0.0]",
-    "© Aeliyadevs 2024. All rights reserved.",
-    "For a list of available commands, type 'help'.",
-  ];
+  const typingEffect = () => {
+    let textArray = header.split("");
+
+    let index = 0;
+    let typedText = "";
+
+    if (headerTypingRef.current) {
+      const typingStart = setInterval(() => {
+        if (headerTypingRef.current) {
+          if (index < textArray.length) {
+            typedText += textArray[index];
+            headerTypingRef.current.innerHTML = typedText;
+            index++;
+          } else {
+            clearInterval(typingStart);
+            index = 0;
+            setHeaderTypingCompleted(true);
+          }
+        }
+      }, 1);
+    }
+  };
+
+  useEffect(() => {
+    typingEffect();
+  }, []);
+
+  const [headerTypingCompleted, setHeaderTypingCompleted] =
+    useState<boolean>(false);
+  const [typingCompleted, setTypingCompleted] = useState<boolean>(false);
+  const MarkCompleted = () => {
+    setTypingCompleted(true);
+  };
 
   const FullScreen = () => {
     document.body.requestFullscreen();
@@ -56,20 +86,18 @@ function App() {
           </div>
         </div>
         <div className="prompt-body">
-          <>
-            <pre>{header}</pre>
-            <p id="welcomeText">
-              {welcomeText.map((item, index) => (
-                <span key={index}>
-                  <br />
-                  {item}
-                  <br />
-                </span>
-              ))}
-            </p>
-          </>
+          <pre ref={headerTypingRef}></pre>
+          {headerTypingCompleted && (
+            <>
+              <Welcome completed={MarkCompleted} />
+            </>
+          )}
           <br />
-          <PromptComponent />
+          {typingCompleted && (
+            <>
+              <PromptComponent />
+            </>
+          )}
         </div>
       </div>
     </div>
