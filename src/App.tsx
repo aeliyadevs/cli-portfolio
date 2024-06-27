@@ -9,7 +9,38 @@ import Welcome from "./components/Welcome";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
-  const header = ` ______
+  const character: Array<string> = [
+    ` ______
+|  __  |
+| |  | | 
+| |__| | 
+|  __  | | 
+| |  | | |  _
+| |  | | | |____  
+|_|  |_| |______| 
+            
+::::::::::::::`,
+    ` ______
+|  __  | ::::::
+| |  | |  ______   _      
+| |__| | |  ____| | |     
+|  __  | | |____  | |      
+| |  | | |  ____| | |      
+| |  | | | |____  | |____  
+|_|  |_| |______| |______| |_
+                          
+::::::::::::::::::::::::::`,
+    ` ______
+|  __  | ::::::::::::::::::
+| |  | |  ______   _        _   
+| |__| | |  ____| | |      | | | |  
+|  __  | | |____  | |      | | | |__| 
+| |  | | |  ____| | |      | | |____  | |
+| |  | | | |____  | |____  | |  ____| | | | 
+|_|  |_| |______| |______| |_| |______| |_|  |
+                                                 |
+::::::::::::::::::::::::::::::::::::::::::::::::::`,
+    ` ______
 |  __  | :::::::::::::::::::::::::::::::::::::::::
 | |  | |  ______   _        _   _    _   ______  |
 | |__| | |  ____| | |      | | | |  | | |  __  | |
@@ -18,38 +49,31 @@ function App() {
 | |  | | | |____  | |____  | |  ____| | | |  | | |
 |_|  |_| |______| |______| |_| |______| |_|  |_| |
                                                  |
-::::::::::::::::::::::::::::::::::::::::::::::::::`;
-  const headerTypingRef = useRef<HTMLPreElement>(null);
+::::::::::::::::::::::::::::::::::::::::::::::::::`,
+  ];
 
-  const typingEffect = () => {
-    let textArray = header.split("");
-
+  const animationRef = useRef<HTMLPreElement>(null);
+  const customCharacterAnimation = () => {
     let index = 0;
-    let typedText = "";
-
-    if (headerTypingRef.current) {
-      const typingStart = setInterval(() => {
-        if (headerTypingRef.current) {
-          if (index < textArray.length) {
-            typedText += textArray[index];
-            headerTypingRef.current.innerHTML = typedText;
-            index++;
-          } else {
-            clearInterval(typingStart);
+    const animate = setInterval(() => {
+      if (animationRef.current) {
+        if (index < character.length) {
+          animationRef.current.textContent = character[index];
+          index++;
+          if (index === character.length) {
             index = 0;
-            setHeaderTypingCompleted(true);
           }
+        } else {
+          clearInterval(animate);
         }
-      }, 1);
-    }
+      }
+    }, 500);
   };
 
   useEffect(() => {
-    typingEffect();
+    customCharacterAnimation();
   }, []);
 
-  const [headerTypingCompleted, setHeaderTypingCompleted] =
-    useState<boolean>(false);
   const [typingCompleted, setTypingCompleted] = useState<boolean>(false);
   const MarkCompleted = () => {
     setTypingCompleted(true);
@@ -86,12 +110,8 @@ function App() {
           </div>
         </div>
         <div className="prompt-body">
-          <pre ref={headerTypingRef}></pre>
-          {headerTypingCompleted && (
-            <>
-              <Welcome completed={MarkCompleted} />
-            </>
-          )}
+          <pre ref={animationRef}></pre>
+          <Welcome completed={MarkCompleted} />
           <br />
           {typingCompleted && (
             <>
