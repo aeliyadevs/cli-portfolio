@@ -15,6 +15,8 @@ const Exit: React.FC<ExitProps> = ({ command }) => {
       <div className="output-content">
         Thank you for visiting my portfolio site, and bye for now! <br />
         👋👋👋
+        <br />
+        Exiting ......
       </div>
     </>
   );

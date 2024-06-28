@@ -5,7 +5,7 @@ import square from "./assets/square.svg";
 import PromptComponent from "./components/PromptComponent";
 import MobilePopup from "./components/MobilePopup";
 import Welcome from "./components/Welcome";
-import { useEffect, useRef, useState } from "react";
+import { ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 function App() {
   const character: Array<string> = [
@@ -238,13 +238,26 @@ function App() {
     }, 700);
   };
 
+  const [typingCompleted, setTypingCompleted] = useState<boolean>(false);
+  const MarkCompleted = () => {
+    setTypingCompleted(true);
+  };
+
   useEffect(() => {
     customCharacterAnimation();
   }, []);
 
-  const [typingCompleted, setTypingCompleted] = useState<boolean>(false);
-  const MarkCompleted = () => {
-    setTypingCompleted(true);
+  const [mode, setMode] = useState<string>("pre");
+
+  const updateMode = (mode: string) => {
+    setMode(mode);
+    if (mode === "terminal") {
+      FullScreen();
+    } else if (mode === "pre") {
+      setMode(mode);
+      setTypingCompleted(false);
+      ExitFullScreen();
+    }
   };
 
   const FullScreen = () => {
@@ -256,47 +269,75 @@ function App() {
   return (
     <div className="background">
       <MobilePopup />
-      {/* <div className="banner">
-        <img src="../assets/logo-white.png" alt="" />
-      </div> */}
-      <div className="prompt-window">
-        <div className="header">
-          <div className="header-title">
-            <div className="logo">
-              <img src="../assets/logo.png" alt="" />
-              https://aeliyadevs.com/terminal
+      {mode === "pre" && (
+        <div className="banner">
+          <img src="../assets/logo.png" alt="" />
+          <span>Hey! I am</span>
+          <span className="name">Aeliyadevs</span>
+          <button className="btn-link">GUI Mode in the making</button>
+          <button className="btn-link" onClick={() => updateMode("terminal")}>
+            Use terminal CLI mode
+          </button>
+          <div className="socials">
+            <a href="">
+              <i className="fa-brands fa-github"></i>
+            </a>
+            <a href="">
+              <i className="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="">
+              <i className="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="">
+              <i className="fa-regular fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      )}
+      {mode === "terminal" && (
+        <div className="prompt-window">
+          <div className="header">
+            <div className="header-title">
+              <div className="logo">
+                <img src="../assets/logo.png" alt="" />
+                https://aeliyadevs.com/terminal
+              </div>
+            </div>
+            <div className="controls">
+              <button onClick={ExitFullScreen}>
+                <img src={minimize} alt="" />
+              </button>
+              <button onClick={FullScreen}>
+                <img src={square} alt="" />
+              </button>
+              <button
+                onClick={() => {
+                  updateMode("pre");
+                }}
+              >
+                <img src={closeIcon} alt="" />
+              </button>
             </div>
           </div>
-          <div className="controls">
-            <button onClick={ExitFullScreen}>
-              <img src={minimize} alt="" />
-            </button>
-            <button onClick={FullScreen}>
-              <img src={square} alt="" />
-            </button>
-            <button>
-              <img src={closeIcon} alt="" />
-            </button>
-          </div>
-        </div>
-        <div className="prompt-body">
-          <div className="watermark">
-            <img className="" src="../assets/logo-white.png" alt="" />
-          </div>
-          <div className="char-animation">
-            <pre ref={animationRef}></pre>
-          </div>
-          <div className="prompt-input">
-            <Welcome completed={MarkCompleted} />
+          <div className="prompt-body">
+            <div className="watermark">
+              <img className="" src="../assets/logo-white.png" alt="" />
+            </div>
+            <div className="char-animation">
+              <pre ref={animationRef}></pre>
+            </div>
+            <div className="prompt-input">
+              <Welcome completed={MarkCompleted} />
 
-            {typingCompleted && (
-              <>
-                <PromptComponent />
-              </>
-            )}
+              {typingCompleted && (
+                <>
+                  <PromptComponent updateMode={() => updateMode("pre")} />
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

@@ -91,6 +91,44 @@ input {
   background: rgb(52, 63, 81);
 }
 
+.btn-link {
+  font-size: 1.05rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: $accent-c;
+  position: relative;
+  &:focus-visible {
+    outline: none;
+  }
+  &::before {
+    content: "";
+    width: 0%;
+    height: 1px;
+    background: $accent-c;
+    right: 0;
+    bottom: -5px;
+    position: absolute;
+    transition-duration: 300ms;
+  }
+  &::after {
+    content: "";
+    width: 0%;
+    height: 1px;
+    background: $accent-c;
+    left: 0;
+    bottom: -5px;
+    position: absolute;
+    transition-duration: 300ms;
+  }
+  &:hover {
+    &::before,
+    &::after {
+      width: 50%;
+    }
+  }
+}
+
 .popup {
   position: fixed;
   z-index: 2;
@@ -158,17 +196,39 @@ input {
   }
   .banner {
     width: 100%;
-    height: inherit;
-    position: absolute;
+    height: 100vh;
     // background: #fff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
+    gap: 20px;
     z-index: 1;
     top: 0;
     left: 0;
     img {
-      width: 200px;
+      width: 150px;
+    }
+    .name {
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $accent-c;
+      background: linear-gradient(180deg, $accent-c 60%, #ffffff 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: color-curtain 2s linear infinite;
+    }
+    .socials {
+      display: flex;
+      gap: 30px;
+      a {
+        color: $accent-c;
+        i {
+          font-size: 1.2rem;
+        }
+      }
     }
   }
   .prompt-window {
@@ -232,6 +292,7 @@ input {
           display: flex;
         }
         button {
+          cursor: pointer;
           background: transparent;
           border: none;
           padding: 2px;

@@ -9,7 +9,11 @@ import Resume from "./Resume";
 import Exit from "./Exit";
 import Default from "./Default";
 
-const PromptComponent = () => {
+interface ComponentProps {
+  updateMode: () => void;
+}
+
+const PromptComponent: React.FC<ComponentProps> = ({ updateMode }) => {
   const commands = [
     {
       name: "bio",
@@ -140,6 +144,9 @@ const PromptComponent = () => {
       case "exit":
         setOutputSection([...outputSection, <Exit command={command} />]);
         setUserActive(false);
+        setTimeout(() => {
+          updateMode();
+        }, 2000);
         break;
 
       default:
