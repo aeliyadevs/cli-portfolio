@@ -50,6 +50,7 @@ body {
   // box-sizing: border-box;
 }
 pre {
+  min-height: 280px;
   letter-spacing: 2px;
   color: $accent-c;
   margin: 0;
@@ -58,9 +59,11 @@ pre {
   margin-bottom: 15px;
   @include xs {
     font-size: 10px;
+    min-height: 250px;
   }
   @include sm {
-    font-size: 16px;
+    font-size: 12px;
+    min-height: 295px;
   }
 }
 input {
@@ -145,12 +148,28 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   @include xs {
     padding: 0;
     height: auto;
   }
   @include md {
     height: 100vh;
+  }
+  .banner {
+    width: 100%;
+    height: inherit;
+    position: absolute;
+    // background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    img {
+      width: 200px;
+    }
   }
   .prompt-window {
     width: 1080px;
@@ -229,10 +248,15 @@ input {
       margin: 12px 5px 12px 0;
       overflow-y: auto;
       box-sizing: border-box;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 0;
       @include xs {
         height: 100vh;
         margin: 0;
-        padding: 50px 8px 8px 8px;
+        padding: 15px 8px 8px 8px;
       }
       @include md {
         height: 560px;
@@ -242,8 +266,35 @@ input {
       #welcomeText {
         margin: 0;
         line-height: 30px;
+        text-align: center;
+      }
+      .watermark {
+        width: inherit;
+        height: inherit;
+        display: grid;
+        place-items: center;
+        position: fixed;
+        z-index: -1;
+        left: 0;
+        img {
+          width: 100px;
+          opacity: 0.08;
+          position: fixed;
+          z-index: -1;
+        }
+      }
+      .prompt-input {
+        width: 100%;
       }
       #output {
+        @include xs {
+          margin-top: 30px;
+        }
+
+        @include sm {
+          margin-top: 50px;
+        }
+        margin-top: 50px;
         // overflow-y: auto;
         scroll-behavior: smooth;
         .output-content {
@@ -258,7 +309,7 @@ input {
             @include xs {
               grid-template-columns: 1fr;
             }
-            @include md {
+            @include sm {
               grid-template-columns: 1fr 4fr;
             }
             .item-name {
