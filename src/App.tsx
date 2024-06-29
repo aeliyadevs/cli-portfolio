@@ -220,6 +220,9 @@ function App() {
     ==========================================`,
   ];
 
+  const [mode, setMode] = useState<string>("terminal");
+  const [fullscreen, setFullscreen] = useState<boolean>(false);
+
   const animationRef = useRef<HTMLPreElement>(null);
   const customCharacterAnimation = () => {
     let index = 0;
@@ -244,17 +247,33 @@ function App() {
   };
 
   useEffect(() => {
+    // animate welcome
     customCharacterAnimation();
+
+    // handle Esc key press - exit fullscreen mode
+    document.addEventListener("fullscreenchange", () => {
+      if (!document.fullscreenElement) {
+        setFullscreen(false);
+      }
+    });
   }, []);
 
-  const [mode, setMode] = useState<string>("terminal");
-  const [fullscreen, setFullscreen] = useState<boolean>(false);
+  useEffect(() => {
+    if (promptRef.current) {
+      if (mode === "terminal") {
+        promptRef.current.classList.add("show");
+      } else {
+        promptRef.current.classList.remove("show");
+      }
+    }
+  }, [mode]);
 
+  const promptRef = useRef<HTMLDivElement>(null);
   const updateMode = (mode: string) => {
     setMode(mode);
     if (mode === "terminal") {
       FullScreen();
-    } else if (mode === "pre") {
+    } else if (mode === "normal") {
       setMode(mode);
       setTypingCompleted(false);
       ExitFullScreen();
@@ -271,62 +290,62 @@ function App() {
   };
   return (
     <div className="background">
-      <MobilePopup />
-      {mode === "terminal" && (
-        <>
-          <div className="prompt-window">
-            <div className="header">
-              <div className="header-title">
-                <div className="logo">
-                  <img src="../assets/logo.png" alt="" />
-                  https://aeliyadevs.com/terminal
-                </div>
-              </div>
-              <div className="controls">
-                <button onClick={ExitFullScreen} title="Minimize">
-                  <img src={minimize} alt="" />
-                </button>
-                <button onClick={FullScreen} title="Maximize">
-                  <img src={square} alt="" />
-                </button>
-                <button
-                  // onClick={() => {
-                  //   updateMode("pre");
-                  // }}
-                  title="Exit"
-                >
-                  <img src={closeIcon} alt="" />
-                </button>
+      {/* {mode === "terminal" && ( */}
+      <>
+        <MobilePopup />
+        <div ref={promptRef} className="prompt-window">
+          <div className="header">
+            <div className="header-title">
+              <div className="logo">
+                <img src="../assets/logo.png" alt="" />
+                https://aeliyadevs.com/terminal
               </div>
             </div>
-            <div className="prompt-body">
-              <div className="watermark">
-                <img className="" src="../assets/logo-white.png" alt="" />
-              </div>
-              <div className="char-animation">
-                <pre ref={animationRef}></pre>
-              </div>
-              <div className="prompt-input">
-                <Welcome completed={MarkCompleted} />
-
-                {typingCompleted && (
-                  <>
-                    <PromptComponent updateMode={() => updateMode("pre")} />
-                  </>
-                )}
-              </div>
+            <div className="controls">
+              <button onClick={ExitFullScreen} title="Minimize">
+                <img src={minimize} alt="" />
+              </button>
+              <button onClick={FullScreen} title="Maximize">
+                <img src={square} alt="" />
+              </button>
+              <button
+                onClick={() => {
+                  updateMode("normal");
+                }}
+                title="Exit"
+              >
+                <img src={closeIcon} alt="" />
+              </button>
             </div>
           </div>
-          {!fullscreen && (
-            <p>
-              <button className="btn-link" onClick={FullScreen}>
-                Go fullscreen
-              </button>{" "}
-              for better user experience
-            </p>
-          )}
-        </>
-      )}
+          <div className="prompt-body">
+            <div className="watermark">
+              <img className="" src="../assets/logo-white.png" alt="" />
+            </div>
+            <div className="char-animation">
+              <pre ref={animationRef}></pre>
+            </div>
+            <div className="prompt-input">
+              <Welcome completed={MarkCompleted} />
+
+              {typingCompleted && (
+                <>
+                  <PromptComponent updateMode={() => updateMode("normal")} />
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+        {mode === "terminal" && !fullscreen && (
+          <p>
+            <button className="btn-link" onClick={FullScreen}>
+              Go fullscreen
+            </button>{" "}
+            for better user experience
+          </p>
+        )}
+      </>
+      {/* )} */}
     </div>
   );
 }

@@ -204,6 +204,13 @@ input {
     padding: 0;
     border-radius: 12px;
     box-shadow: 0 0 10px $bg-c;
+    transform: translateY(100px) scale(0.7);
+    opacity: 0;
+    transition-duration: 0.5s;
+    &.show {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
     @include xs {
       width: 100%;
     }
@@ -379,3 +386,14 @@ input {
     }
   }
 }
+
+// @keyframes show-prompt {
+//   from {
+//     transform: scale(0.8) translateY(100px);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: scale(1) translateY(0);
+//     opacity: 1;
+//   }
+// }
