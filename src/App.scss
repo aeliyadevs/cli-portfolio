@@ -96,7 +96,7 @@ input {
   background: transparent;
   border: none;
   padding: 0;
-  color: $accent-c;
+  color: $primary-c;
   position: relative;
   &:focus-visible {
     outline: none;
@@ -105,7 +105,7 @@ input {
     content: "";
     width: 0%;
     height: 1px;
-    background: $accent-c;
+    background: $primary-c;
     right: 0;
     bottom: -5px;
     position: absolute;
@@ -115,7 +115,7 @@ input {
     content: "";
     width: 0%;
     height: 1px;
-    background: $accent-c;
+    background: $primary-c;
     left: 0;
     bottom: -5px;
     position: absolute;
@@ -184,6 +184,7 @@ input {
   padding: 15px;
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -193,43 +194,6 @@ input {
   }
   @include md {
     height: 100vh;
-  }
-  .banner {
-    width: 100%;
-    height: 100vh;
-    // background: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-    gap: 20px;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    img {
-      width: 150px;
-    }
-    .name {
-      font-size: 3rem;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: $accent-c;
-      background: linear-gradient(180deg, $accent-c 60%, #ffffff 60%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: color-curtain 2s linear infinite;
-    }
-    .socials {
-      display: flex;
-      gap: 30px;
-      a {
-        color: $accent-c;
-        i {
-          font-size: 1.2rem;
-        }
-      }
-    }
   }
   .prompt-window {
     width: 1080px;
