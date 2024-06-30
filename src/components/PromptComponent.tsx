@@ -184,7 +184,7 @@ const PromptComponent: React.FC<ComponentProps> = ({ updateMode }) => {
               value={command}
               autoFocus={true}
               onChange={(e) => {
-                setCommand(e.target.value);
+                setCommand(e.target.value.toLowerCase());
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {

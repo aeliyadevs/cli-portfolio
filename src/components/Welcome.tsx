@@ -9,7 +9,7 @@ const Welcome: React.FC<ComponentProps> = ({ completed }) => {
 
   const typingEffect = () => {
     const myParagraph =
-      "PORTFOLIO CLI <br /> Welcome to my CLI Portfolio [Version 1.0.0] <br /> Copyright © Aeliyadevs 2024. All rights reserved. <br > ... <br /> For a list of available commands, type 'help'.";
+      "PORTFOLIO CLI <br /> Welcome to my CLI(terminal) style Portfolio [version 1.0.0] <br /> Copyright © Aeliyadevs 2024. All rights reserved. <br > ... <br /> For a list of available commands, type 'help'.";
     let textArray = myParagraph.split("");
 
     let index = 0;
