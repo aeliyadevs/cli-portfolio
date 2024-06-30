@@ -1,0 +1,72 @@
+@import "../../assets/scss/partials";
+@import "../../assets/scss/mixins";
+
+.landing-section {
+  width: 100%;
+  height: 100vh;
+  padding: 15px;
+  background: $bg-c;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .watermark {
+    width: 150px;
+    opacity: 0.07;
+    position: absolute;
+  }
+  .content {
+    width: 100%;
+    max-width: 1080px;
+    height: 560px;
+    padding: 15px 100px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: $dark-c;
+    color: $text-c;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid $accent-c;
+    gap: 15px;
+    @include xs {
+      padding: 15px;
+    }
+    p {
+      margin: 0;
+      &.name {
+        font-size: 3rem;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+      }
+    }
+    @include sm {
+      padding: 15px 100px;
+    }
+    .socials {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 0;
+      li {
+        width: 35px;
+        height: 35px;
+        border-radius: 4px;
+        display: grid;
+        place-items: center;
+        border: 1px solid $primary-c;
+        a {
+          color: $primary-c;
+          font-size: 1.25rem;
+        }
+      }
+    }
+  }
+}

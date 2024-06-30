@@ -6,7 +6,7 @@ import PromptComponent from "./components/PromptComponent";
 import MobilePopup from "./components/MobilePopup";
 import Welcome from "./components/Welcome";
 import { useEffect, useRef, useState } from "react";
-import LandingPage from "./components/LandingPage";
+import LandingPage from "./components/Landing/LandingPage";
 
 function App() {
   const character: Array<string> = [
@@ -294,7 +294,6 @@ function App() {
       {mode === "terminal" && (
         <div className="background">
           <MobilePopup />
-
           <div ref={promptRef} className="prompt-window">
             {mode === "terminal" && !fullscreen && (
               <p className="fullscreen-hint">
@@ -348,7 +347,9 @@ function App() {
           </div>
         </div>
       )}
-      {mode === "normal" && <LandingPage />}
+      {mode === "normal" && (
+        <LandingPage updateMode={() => updateMode("terminal")} />
+      )}
     </>
   );
 }
