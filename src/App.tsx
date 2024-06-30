@@ -6,6 +6,7 @@ import PromptComponent from "./components/PromptComponent";
 import MobilePopup from "./components/MobilePopup";
 import Welcome from "./components/Welcome";
 import { useEffect, useRef, useState } from "react";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const character: Array<string> = [
@@ -289,64 +290,66 @@ function App() {
     setFullscreen(false);
   };
   return (
-    <div className="background">
-      {/* {mode === "terminal" && ( */}
-      <>
-        <MobilePopup />
-        <div ref={promptRef} className="prompt-window">
-          <div className="header">
-            <div className="header-title">
-              <div className="logo">
-                <img src="../assets/logo.png" alt="" />
-                https://aeliyadevs.com/terminal
+    <>
+      {mode === "terminal" && (
+        <div className="background">
+          <MobilePopup />
+
+          <div ref={promptRef} className="prompt-window">
+            {mode === "terminal" && !fullscreen && (
+              <p className="fullscreen-hint">
+                <button className="btn-link" onClick={FullScreen}>
+                  Go fullscreen
+                </button>{" "}
+                for better user experience
+              </p>
+            )}
+            <div className="header">
+              <div className="header-title">
+                <div className="logo">
+                  <img src="../assets/logo.png" alt="" />
+                  https://aeliyadevs.com/terminal
+                </div>
+              </div>
+              <div className="controls">
+                <button onClick={ExitFullScreen} title="Minimize">
+                  <img src={minimize} alt="" />
+                </button>
+                <button onClick={FullScreen} title="Maximize">
+                  <img src={square} alt="" />
+                </button>
+                <button
+                  onClick={() => {
+                    updateMode("normal");
+                  }}
+                  title="Exit"
+                >
+                  <img src={closeIcon} alt="" />
+                </button>
               </div>
             </div>
-            <div className="controls">
-              <button onClick={ExitFullScreen} title="Minimize">
-                <img src={minimize} alt="" />
-              </button>
-              <button onClick={FullScreen} title="Maximize">
-                <img src={square} alt="" />
-              </button>
-              <button
-                onClick={() => {
-                  updateMode("normal");
-                }}
-                title="Exit"
-              >
-                <img src={closeIcon} alt="" />
-              </button>
-            </div>
-          </div>
-          <div className="prompt-body">
-            <div className="watermark">
-              <img className="" src="../assets/logo-white.png" alt="" />
-            </div>
-            <div className="char-animation">
-              <pre ref={animationRef}></pre>
-            </div>
-            <div className="prompt-input">
-              <Welcome completed={MarkCompleted} />
+            <div className="prompt-body">
+              <div className="watermark">
+                <img className="" src="../assets/logo-white.png" alt="" />
+              </div>
+              <div className="char-animation">
+                <pre ref={animationRef}></pre>
+              </div>
+              <div className="prompt-input">
+                <Welcome completed={MarkCompleted} />
 
-              {typingCompleted && (
-                <>
-                  <PromptComponent updateMode={() => updateMode("normal")} />
-                </>
-              )}
+                {typingCompleted && (
+                  <>
+                    <PromptComponent updateMode={() => updateMode("normal")} />
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
-        {mode === "terminal" && !fullscreen && (
-          <p>
-            <button className="btn-link" onClick={FullScreen}>
-              Go fullscreen
-            </button>{" "}
-            for better user experience
-          </p>
-        )}
-      </>
-      {/* )} */}
-    </div>
+      )}
+      {mode === "normal" && <LandingPage />}
+    </>
   );
 }
 

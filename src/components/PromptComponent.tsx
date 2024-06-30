@@ -48,7 +48,7 @@ const PromptComponent: React.FC<ComponentProps> = ({ updateMode }) => {
       description: "Clear screen",
     },
     {
-      name: "Exit",
+      name: "exit",
       description: "Exit",
     },
   ];

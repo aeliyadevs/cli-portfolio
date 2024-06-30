@@ -6,23 +6,28 @@ const Contact: React.FC<ContactComponentProps> = ({ command }) => {
   const contactInfo = [
     {
       name: "Phone",
-      description: "9876543210",
+      description: "+977 9876543210",
+      link: "tel:+977-9803079279",
     },
     {
       name: "email",
       description: "aeliyadevs@gmail.com",
+      link: "mailto:aeliyadevs@gmail.com",
     },
     {
       name: "facebook",
-      description: "https://facebook.com",
+      description: "facebook.com/aeliya.tamang/",
+      link: "https://www.facebook.com/aeliya.tamang/",
     },
     {
       name: "linkedin",
-      description: "https://linkedin.com",
+      description: "linkedin.com/in/aeliya-tamang-808762136",
+      link: "https://www.linkedin.com/in/aeliya-tamang-808762136",
     },
     {
       name: "github",
-      description: "https://github.com",
+      description: "https://github.com/aeliyadevs/",
+      link: "https://github.com/aeliyadevs/",
     },
   ];
   return (
@@ -38,7 +43,11 @@ const Contact: React.FC<ContactComponentProps> = ({ command }) => {
         {contactInfo.map((contact, index) => (
           <div key={index} className="item">
             <div className="item-name">{contact.name}</div>
-            <div>{contact.description}</div>
+            <div>
+              <a href={contact.link} target="_blank">
+                {contact.description}
+              </a>
+            </div>
           </div>
         ))}
       </div>
